@@ -24,7 +24,8 @@ const Register = ({ onClose, setLoggedIn, setToken, setUserId }) => {
 		event.preventDefault();
 		axios({
 			method: 'POST',
-			url: `foodpickerback.herokuapp.com/api/register/`,
+			url: `https://foodpickerback.herokuapp.com/api/register/`,
+			// localhost:8000/api/register/
 			data: user,
 		})
 			.then((res) => {

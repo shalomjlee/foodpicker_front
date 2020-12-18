@@ -26,7 +26,8 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId }) => {
 		event.preventDefault();
 		axios({
 			method: 'POST',
-			url: `foodpickerback.herokuapp.com/api/login/`,
+			url: `https://foodpickerback.herokuapp.com/api/login/`,
+			// localhost:8000/api/login/
 			data: user,
 		})
 			.then((res) => {
