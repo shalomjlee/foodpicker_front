@@ -21,18 +21,20 @@ const RandomByCategory = ({match, token, category, setCategory, restaurant, setR
 
 	if (!restaurant) {
 		return <div>Loading...</div>;
-	}
+	} else {
+        return (
+                <div>
+                    <h1>Here is your {match.params.category} Restaurant</h1>
+                    <h4>Name: {restaurant[0]?.name}</h4>
+                    <h4>Category: ?{restaurant[0]?.category}</h4>
+                    <h4>price range (1-4): {restaurant[0]?.price}</h4>
+                    <h4>Address: {restaurant[0]?.address}</h4>
+                </div>
+            );
+
+    }
 
 
-    return (
-			<div>
-				<h1>Here is your {match.params.category} Restaurant</h1>
-				<h4>Name: {restaurant[0].name}</h4>
-				<h4>Category: {restaurant[0].category}</h4>
-				<h4>price range (1-4): {restaurant[0].price}</h4>
-				<h4>Address: {restaurant[0].address}</h4>
-			</div>
-		);
 };
 
 export default RandomByCategory;
