@@ -118,7 +118,7 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId }) => {
 						Sign Up
 					</Button>
 				</Link>
-				<Link to='/changePassword'>
+				{/* <Link to='/changePassword'>
 					<Button 
 					variant='primary'
 					className='login-button-modal2'
@@ -127,7 +127,7 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId }) => {
 					>
 						Change password
 						</Button>
-				</Link>
+				</Link> */}
 			</Form>
 		</div>
 	);
