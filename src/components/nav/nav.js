@@ -17,9 +17,6 @@ const nav = ({ setToken, setLoggedIn }) => {
 				<Navbar.Toggle aria-controls='basic-navbar-nav' />
 				<Navbar.Collapse id='basic-navbar-nav'>
 					<Nav className='mr-auto'>
-						<Link to='/favorites' className='nav-link'>
-							Favorites
-						</Link>
 						<Link to='/register' className='nav-link'>
 							Sign up
 						</Link>

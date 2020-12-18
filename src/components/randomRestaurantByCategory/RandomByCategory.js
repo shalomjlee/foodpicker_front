@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {Link} from 'react-router-dom'
-const RandomByCategory = ({match, token, category, setCategory, restaurant, setRestaurant}) => {
+const RandomByCategory = ({match, token, restaurant, setRestaurant}) => {
     useEffect(() => {
         const restaurantURL = `https://foodpickerback.herokuapp.com/api/category/${match.params.category}`
         // `http://localhost:8000/api/category/${match.params.category}`;
@@ -27,7 +27,7 @@ const RandomByCategory = ({match, token, category, setCategory, restaurant, setR
 					<div>
 						<h1>Here is your {match.params.category} Restaurant</h1>
 						<h4>Name: {restaurant[0]?.name}</h4>
-						<h4>Category: {restaurant[0]?.category}</h4>
+						<h4>Category: {restaurant[0].category}</h4>
 						<h4>price range (1-4): {restaurant[0]?.price}</h4>
 						<h4>Address: {restaurant[0]?.address}</h4>
 						<p>

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {Card} from 'react-bootstrap';
 
-const RestaurantCategory = ({setRestaurantCategory, restaurantCategory, match, token}) => {
+const RestaurantCategory = () => {
 
     const restaurantCategories = [
 			'American',
@@ -19,7 +19,6 @@ const RestaurantCategory = ({setRestaurantCategory, restaurantCategory, match, t
 			'Thai',
         ];
         
-  
     return (
 			<div id='category' className='section-container'>
 				<h2 className='browse-text'>Select random restaurant by category</h2>

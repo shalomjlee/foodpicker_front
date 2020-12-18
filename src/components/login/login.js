@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { Redirect, Route, Link } from 'react-router-dom';
-import { Form, Button, Modal, Container, Row, Col, Alert } from 'react-bootstrap';
-import Home from '../home/home';
-import axios from 'axios';
-import './login.css';
+import { Redirect, Link } from 'react-router-dom';
+import { Form, Button, Modal } from 'react-bootstrap';
 import NewUser from '../register/register';
+import axios from 'axios';
 
-
-const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId}) => {
+const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId }) => {
 	const [user, setUser] = useState({
 		username: '',
 		email: '',
@@ -20,7 +17,7 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId}) => {
 	const onShow = () => setShowModal(true);
 	const [error, setError] = useState('');
 	function success() {
-	window.alert('you have been logged in');
+		window.alert('you have been logged in');
 	}
 	function failure() {
 		console.log('something went wrong');
@@ -46,8 +43,6 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId}) => {
 			})
 			.catch(console.error);
 	};
-	
-
 
 	const onChange = (event) => {
 		event.preventDefault();
@@ -66,10 +61,8 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId}) => {
 				onHide={onClose}
 				backdrop='static'
 				keyboard={false}
-				className='modal-form'
-			>
-
-			<NewUser onClose = {onClose} />
+				className='modal-form'>
+				<NewUser onClose={onClose} />
 			</Modal>
 			<Form onSubmit={onSubmit} className='userForm'>
 				<Form.Group>
@@ -103,8 +96,7 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId}) => {
 						variant='primary'
 						className='login-button-modal1'
 						type='submit'
-						onClick={onSubmit}
-						>
+						onClick={onSubmit}>
 						Login
 					</Button>
 					<Button

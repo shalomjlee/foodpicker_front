@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 const RandomByPrice = ({
 	match,
 	token,
-	priced,
-	setPriced,
 	restaurant,
 	setRestaurant,
 }) => {
@@ -35,7 +33,7 @@ const RandomByPrice = ({
 		<div>
 			<h1>Here is your {match.params.price} $ Restaurant</h1>
 			<h4>Name: {restaurant[0]?.name}</h4>
-			<h4>Category: {restaurant[0]?.category}</h4>
+			<h4>Category: {restaurant[0].category}</h4>
 			<h4>Price range (1-4): {restaurant[0]?.price}</h4>
 			<h4>Address: {restaurant[0]?.address}</h4>
 			<p>

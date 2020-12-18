@@ -1,53 +1,57 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import './register.css';
 
-const Login = ({ onClose, setLoggedIn }) => {
-	const [error, setError] = useState('');
-	const [redirect, setRedirect] = useState(false);
-	const [show, setShow] = useState(true)
+const Register = ({ onClose, setLoggedIn, setToken, setUserId }) => {
 	const [user, setUser] = useState({
 		username: '',
 		email: '',
 		password: '',
 	});
-	
+
+	const [redirect, setRedirect] = useState(false);
+	const [error, setError] = useState('');
 	function success() {
-		window.alert('you are logged in');
+		window.alert('you have been registered');
 	}
 	function failure() {
-		window.alert('something went wrong. try again');
+		console.log('something went wrong');
 	}
+
 	const onSubmit = (event) => {
 		event.preventDefault();
 		axios({
 			method: 'POST',
-			// url: 'https://gitwrap-backend.herokuapp.com/user/signup/',
 			url: 'http://localhost:8000/api/register/',
 			data: user,
 		})
 			.then((res) => {
+				console.log(res)
+				setToken(res.data.token);
+				setUserId(res.data.userId);
 				if (res.data.token) {
 					success();
 					setLoggedIn(true);
 					setRedirect(true);
 				} else {
-					failure();
 					setError(res.data);
+					failure();
 				}
 			})
 			.catch(console.error);
-		
 	};
 
 	const onChange = (event) => {
 		event.preventDefault();
 		setUser({ ...user, [event.target.name]: event.target.value });
 	};
-	
 
+	if (redirect) {
+		return <Redirect to='/' />;
+	}
+	
 	return (
 		<div className='modal-container'>
 			<h1>Create an Account</h1>
@@ -90,15 +94,14 @@ const Login = ({ onClose, setLoggedIn }) => {
 						variant='primary'
 						className='login-button-modal'
 						type='submit'
-						onClick={onClose}
-						>
+						onClick={onClose}>
 						Close
 					</Button>
 				</Link>
-					<Link to='/login'> Login here</Link>
+				<Link to='/login'> Login here</Link>
 			</Form>
 		</div>
 	);
 };
 
-export default Login;
+export default Register;

@@ -1,20 +1,15 @@
 import React, { Component, Fragment, useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { Route, Switch, Link } from 'react-router-dom';
 import Nav from './components/nav/nav';
 import NotFound from './components/notFound/notFound';
 import Home from './components/home/home';
 import Login from './components/login/login';
-import Register from './components/register/register'
+import Register from './components/register/register';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RestaurantPrice from './components/restaurantPrice/restaurantPrice';
 import RestaurantCategory from './components/restaurantCategory/restaurantCategory';
 import RandomByCategory from './components/randomRestaurantByCategory/RandomByCategory';
 import RandomByPrice from './components/randomRestaurantByPrice/RandomByPrice';
-
-
-
-
 
 const App = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -51,7 +46,6 @@ const App = () => {
 					<Route
 						exact
 						path='/login'
-						// component={Login}
 						render={() => {
 							return (
 								<Login
@@ -69,10 +63,15 @@ const App = () => {
 						path='/register'
 						render={() => {
 							return (
-								<Home loggedin={loggedIn} token={token} setToken={setToken} />
+								<Register
+									loggedin={loggedIn}
+									setLoggedIn={setLoggedIn}
+									token={token}
+									setToken={setToken}
+									setUserId={setUserId}
+								/>
 							);
 						}}
-						component={Register}
 					/>
 					<Route
 						exact
