@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import {Link} from 'react-router-dom'
 const RandomByCategory = ({match, token, category, setCategory, restaurant, setRestaurant}) => {
     useEffect(() => {
-		const restaurantURL = `http://localhost:8000/api/category/${match.params.category}`;
+        const restaurantURL = `https://foodpickerback.herokuapp.com/api/category/${match.params.category}`
+        // `http://localhost:8000/api/category/${match.params.category}`;
 		fetch(restaurantURL, {
 			headers: {
 				Authorization: `Bearer ${token}`,
