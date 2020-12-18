@@ -31,7 +31,7 @@ const RandomByCategory = ({match, token, restaurant, setRestaurant}) => {
 						<h4>price range (1-4): {restaurant[0]?.price}</h4>
 						<h4>Address: {restaurant[0]?.address}</h4>
 						<p>
-							<Link to='/price'> Go Back </Link>
+							<Link to='/category'> Go Back </Link>
 						</p>
 						<p>
 							<Link to='/'>Home</Link>

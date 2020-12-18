@@ -10,6 +10,7 @@ import RestaurantPrice from './components/restaurantPrice/restaurantPrice';
 import RestaurantCategory from './components/restaurantCategory/restaurantCategory';
 import RandomByCategory from './components/randomRestaurantByCategory/RandomByCategory';
 import RandomByPrice from './components/randomRestaurantByPrice/RandomByPrice';
+import ChangePassword from './components/changePassword/changePassword';
 
 const App = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -42,6 +43,10 @@ const App = () => {
 								/>
 							);
 						}}
+					/>
+					<Route
+					exact path='/changePassword'
+					component={ChangePassword}
 					/>
 					<Route
 						exact

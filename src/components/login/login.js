@@ -44,7 +44,17 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId }) => {
 			})
 			.catch(console.error);
 	};
+	const changePass = (event) => {
+		event.preventDefault();
+		axios({
+			method: 'PUT',
+			url: 'http://localhost:8000/api/change-password',
+			data: user,
+		})
+		.then((res) => {
 
+		})
+	}
 	const onChange = (event) => {
 		event.preventDefault();
 		setUser({ ...user, [event.target.name]: event.target.value });
@@ -107,6 +117,16 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId }) => {
 						onClick={onShow}>
 						Sign Up
 					</Button>
+				</Link>
+				<Link to='/changePassword'>
+					<Button 
+					variant='primary'
+					className='login-button-modal2'
+					type='submit'
+					onClick={changePass}
+					>
+						Change password
+						</Button>
 				</Link>
 			</Form>
 		</div>
