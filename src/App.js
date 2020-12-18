@@ -7,8 +7,8 @@ import Home from './components/home/home';
 import Login from './components/login/login';
 import Register from './components/register/register'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import restaurantPrice from './components/restaurantPrice/restaurantPrice';
-import restaurantCategory from './components/restaurantCategory/restaurantCategory';
+import RestaurantPrice from './components/restaurantPrice/restaurantPrice';
+import RestaurantCategory from './components/restaurantCategory/restaurantCategory';
 import RandomByCategory from './components/randomRestaurantByCategory/RandomByCategory';
 import RandomByPrice from './components/randomRestaurantByPrice/RandomByPrice';
 
@@ -19,10 +19,10 @@ import RandomByPrice from './components/randomRestaurantByPrice/RandomByPrice';
 const App = () => {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const [userId, setUserId] = useState('');
-	const [token, setToken] = useState(null);
+	const [token, setToken] = useState('');
 	const [category, setCategory] = useState('');
 	const [price, setPrice] = useState(null);
-
+	const [restaurant, setRestaurant] = useState([]);
 	return (
 		<div>
 			<header>
@@ -77,27 +77,32 @@ const App = () => {
 					<Route
 						exact
 						path='/category'
-						component={restaurantCategory}
-						// render={(routerProps) => {
-						// 	<restaurantCategory
-						// 		match={routerProps.match}
-						// 		token={token}
-						// 		loggedIn={loggedIn}
-						// 	/>
-						// }}
+						render={(routerProps) => {
+							return (
+								<RestaurantCategory
+									match={routerProps.match}
+									token={token}
+									loggedIn={loggedIn}
+									setRestaurantCategory={setCategory}
+									restaurantCategory={category}
+								/>
+							);
+						}}
 					/>
 					<Route
 						exact
 						path='/price'
-						component={restaurantPrice}
-						// render={(routerProps) => {
-
-						// 	return <restaurantPrice
-						// 		match={routerProps.match}
-						// 		loggedIn={loggedIn}
-						// 	/>
-						// }
-						// }
+						component={RestaurantPrice}
+						render={(routerProps) => {
+							return (
+								<RestaurantPrice
+									match={routerProps.match}
+									loggedIn={loggedIn}
+									restaurantPrice={price}
+									setRestaurantPrice={setPrice}
+								/>
+							);
+						}}
 					/>
 					<Route
 						exact
@@ -108,6 +113,8 @@ const App = () => {
 								setCategory={setCategory}
 								match={routerProps.match}
 								token={token}
+								restaurant={restaurant}
+								setRestaurant={setRestaurant}
 							/>
 						)}
 					/>
@@ -116,10 +123,12 @@ const App = () => {
 						path='/price/:price'
 						render={(routerProps) => (
 							<RandomByPrice
-								price={price}
-								setPrice={setPrice}
+								priced={price}
+								setPriced={setPrice}
 								match={routerProps.match}
 								token={token}
+								restaurant={restaurant}
+								setRestaurant={setRestaurant}
 							/>
 						)}
 					/>

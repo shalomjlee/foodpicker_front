@@ -84,7 +84,7 @@ const Login = ({ onClose, setLoggedIn }) => {
 						className='login-button-modal1'
 						type='submit'
 						onClick={onSubmit}>
-						Submit
+						Register
 					</Button>
 					<Button
 						variant='primary'

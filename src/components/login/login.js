@@ -20,7 +20,10 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId}) => {
 	const onShow = () => setShowModal(true);
 	const [error, setError] = useState('');
 	function success() {
-	window.alert('you are logged in');
+	window.alert('you have been logged in');
+	}
+	function failure() {
+		console.log('something went wrong');
 	}
 	const onSubmit = (event) => {
 		event.preventDefault();
@@ -38,10 +41,13 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId}) => {
 					setRedirect(true);
 				} else {
 					setError(res.data);
+					failure();
 				}
 			})
 			.catch(console.error);
 	};
+	
+
 
 	const onChange = (event) => {
 		event.preventDefault();
@@ -97,7 +103,8 @@ const Login = ({ setToken, setLoggedIn, loggedIn, userid, setUserId}) => {
 						variant='primary'
 						className='login-button-modal1'
 						type='submit'
-						onClick={onSubmit}>
+						onClick={onSubmit}
+						>
 						Login
 					</Button>
 					<Button

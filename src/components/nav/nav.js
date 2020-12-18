@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import './nav.css';
 
 const nav = ({ setToken, setLoggedIn }) => {
+	const loggedOut = () => {
+		window.alert('You have been successfully logged out')
+	}
+	
 	return (
 		<div>
 			<Navbar bg='light' expand='lg'>
@@ -29,6 +33,7 @@ const nav = ({ setToken, setLoggedIn }) => {
 							onClick={() => {
 								setToken('');
 								setLoggedIn(false);
+								loggedOut();
 							}}>
 							Logout
 						</Link>
